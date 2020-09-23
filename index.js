@@ -21,7 +21,7 @@
       })
       .then(function(object) {
           console.log(object);
-          document.body.innerHTML = JSON.stringify(object);
+          document.body.innerHTML = `name: ${object.name}, email: ${object.email}, id: ${object.id}` 
       })
       .catch(function(error) {
         alert("error!");
