@@ -1,31 +1,31 @@
 // Add your code here
-let formData = {
-    name: "Nabil Hayet",
-    email: "nabil4457@yahoo.com"
-  };
-   
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(formData)
-  };
+  
 
-  function submitData(name,email){
-   return fetch("http://localhost:3000/users", configObj);
+  function submitData(name_,email_){
+
+    let configObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: name_,
+            email: email_
+          })
+      };
+
+   return fetch("http://localhost:3000/users", configObj)
    .then(function(response) {
     return response.json();
   })
   .then(function(object) {
     let body = document.querySelector("body")
-    let newLi = document.createElement("li")
-    newLi.innerText = object.id 
-    body.appendChild(newLi)
+    body.innerHTML = object.id 
   })
   .catch(function(error) {
     alert("Unexpected id returned!");
-    console.log(error.message);
+    let body = document.querySelector("body")
+    body.innerHTML = error.message;
   });
 }
